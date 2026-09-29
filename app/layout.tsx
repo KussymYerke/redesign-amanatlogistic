@@ -15,28 +15,26 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Amanat Logistic — Грузоперевозки по Казахстану и СНГ',
+  title: "Amanat Logistic - Грузоперевозки по Казахстану и СНГ",
   description:
     'Грузоперевозки собственным автопарком 1–200 тонн в Алматы, по Казахстану и СНГ. Работаем 24/7.',
-  generator: 'v0.app',
+  keywords: [
+    "грузоперевозки",
+    "логистика",
+    "доставка",
+    "доставка щебень",
+    "доставка песок",
+    "вывоз мусора",
+    "инертные материалы",
+    "Алматы",
+    "самосвал",
+  ],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
-}
+};
 
 export const viewport: Viewport = {
   themeColor: '#062230',

@@ -32,8 +32,8 @@ export function Cargo() {
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="relative aspect-[4/3] overflow-hidden rounded-sm rounded-br-[3rem] lg:col-span-2 lg:aspect-auto">
             <Image
-              src="/images/cargo-trawl.png"
-              alt="Трал перевозит экскаватор по трассе"
+              src="/images/truck-tent.jpeg"
+              alt="Коммерческий груз"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"

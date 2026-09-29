@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <a href="#top" className={cn('flex items-center gap-3', className)} aria-label="Amanat Logistic — на главную">
+    <a href="/" className={cn('flex items-center gap-3', className)} aria-label="Amanat Logistic — на главную">
       <span aria-hidden="true" className="flex h-9 items-end gap-1">
         {[14, 22, 30, 22, 36].map((h, i) => (
           <span

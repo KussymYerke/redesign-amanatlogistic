@@ -3,19 +3,25 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
-import { featuredTruck, fleet } from '@/lib/content'
+import { truckSpecs, fleet } from '@/lib/content'
 import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
 
 const truckImages: Record<string, string> = {
-  HOWO: '/images/fleet-howo.png',
-  'Mercedes-Benz Arocs': '/images/hero-truck.png',
-  'Shacman X3000': '/images/cargo-trawl.png',
-  'Трал': '/images/cargo-trawl.png',
+  HOWO: '/images/truck-howo.png',
+  'Mercedes-Benz Arocs': '/images/truck-mercedes.png',
+  'Shacman X3000': '/images/truck-shacman.png',
+  Газель: '/images/truck-gazelle.jpeg',
+  DAF: '/images/truck-daf.jpeg',
+  'Mercedes-Benz': '/images/truck-mercedes-10t.jpeg',
+  'Открытая площадка': '/images/truck-open-platform.jpeg',
+  Тент: '/images/truck-tent.jpeg',
+  Рефрижератор: '/images/truck-refrigerator.jpeg',
+  Трал: '/images/truck-trawl.jpeg',
 }
 
 export function Fleet() {
-  const [activeTruck, setActiveTruck] = useState(featuredTruck.name)
+  const [activeTruck, setActiveTruck] = useState(fleet[0]?.name ?? '')
   const selectedTruck = fleet.find((truck) => truck.name === activeTruck) ?? fleet[0]
   const selectedImage = truckImages[selectedTruck.name] ?? '/images/hero-truck.png'
 
@@ -83,7 +89,7 @@ export function Fleet() {
             <div className="flex flex-col gap-6 p-6 md:p-8">
               <p className="leading-relaxed text-muted-foreground">{selectedTruck.name} — собственный транспорт AMANAT Logistic для надёжной перевозки грузов. Грузоподъёмность {selectedTruck.capacity}{selectedTruck.volume !== '—' ? `, объём ${selectedTruck.volume}` : ''}. Машина проходит регулярное техническое обслуживание и готова к работе на городских и междугородних маршрутах.</p>
               <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-3">
-                {featuredTruck.specs.map((spec) => (
+                {(truckSpecs[selectedTruck.name] ?? truckSpecs.HOWO).map((spec) => (
                   <div key={spec.label} className="flex flex-col gap-1 border-t border-border pt-3">
                     <dt className="text-xs uppercase tracking-wider text-muted-foreground">{spec.label}</dt>
                     <dd className="font-heading text-sm font-bold">{spec.value}</dd>
