@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-manrope), 'Manrope', system-ui, sans-serif;
+  --font-heading: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-slate-accent: var(--slate-accent);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Palette: navy ink, petrol blue, steel slate, white, cool gray */
+  --background: #ffffff;
+  --foreground: #0b1d27;
+  --navy: #062230;
+  --navy-foreground: #ffffff;
+  --slate-accent: #7f9aab;
+
+  --card: #ffffff;
+  --card-foreground: #0b1d27;
+  --popover: #ffffff;
+  --popover-foreground: #0b1d27;
+  --primary: #0b3d56;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2f4;
+  --secondary-foreground: #0b1d27;
+  --muted: #eef2f4;
+  --muted-foreground: #5a6b75;
+  --accent: #eef2f4;
+  --accent-foreground: #0b1d27;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #d9e1e6;
+  --input: #d9e1e6;
+  --ring: #0b3d56;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+}
