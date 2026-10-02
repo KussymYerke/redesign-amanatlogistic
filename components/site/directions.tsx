@@ -1,5 +1,5 @@
-import { directions, heroStats } from '@/lib/content'
-import { ArrowLink, SectionHeading } from './section-heading'
+import { heroStats } from '@/lib/content'
+import { SectionHeading } from './section-heading'
 
 export function Directions() {
   return (
@@ -8,30 +8,6 @@ export function Directions() {
         <div className="flex flex-col gap-14">
           <SectionHeading
             index="01"
-            eyebrow="Что мы делаем"
-            title="Два направления."
-            titleMuted="Один автопарк."
-            lead="Грузоперевозки собственным автопарком грузоподъёмностью 1–200 тонн — от погрузки до сдачи груза с документами."
-          />
-          <ol className="grid gap-12 md:grid-cols-3 md:gap-10">
-            {directions.map((item, i) => (
-              <li key={item.title} className="flex flex-col gap-4 border-t border-border pt-8">
-                <p className="font-heading text-xs font-bold uppercase tracking-wider text-primary">
-                  {`0${i + 1}`} <span className="text-slate-accent">/</span> {item.tag}
-                </p>
-                <h3 className="font-heading text-2xl font-bold">{item.title}</h3>
-                <p className="leading-relaxed text-muted-foreground">{item.text}</p>
-                <div className="mt-2">
-                  <ArrowLink href={item.link.href} label={item.link.label} />
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="flex flex-col gap-14">
-          <SectionHeading
-            index="02"
             eyebrow="В цифрах"
             title="Масштаб, который"
             titleMuted="работает на вас."

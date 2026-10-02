@@ -31,7 +31,7 @@ export function OrderCta() {
     <section id="order" className="scroll-mt-20 bg-background py-20 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
-          index="08"
+          index="06"
           eyebrow="Готовы начать?"
           title="Получите расчёт"
           titleMuted="стоимости бесплатно."

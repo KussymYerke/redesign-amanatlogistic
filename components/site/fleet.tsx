@@ -29,7 +29,7 @@ export function Fleet() {
     <section id="fleet" className="scroll-mt-20 bg-background py-20 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
-          index="06"
+          index="04"
           eyebrow="Наш транспорт"
           title="Автопарк."
           titleMuted="Весь в собственности."
@@ -45,28 +45,45 @@ export function Fleet() {
               <p className="text-xs text-muted-foreground">Грузоподъёмность</p>
             </div>
             <ul className="max-h-[34rem] overflow-y-auto">
-              {fleet.map((truck) => (
-                <li key={truck.name} className="border-b border-border last:border-b-0">
-                  <button
-                    type="button"
-                    onClick={() => setActiveTruck(truck.name)}
-                    className={cn('flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-muted', activeTruck === truck.name && 'bg-muted')}
-                    aria-pressed={activeTruck === truck.name}
-                  >
-                  <div className="flex items-start gap-3">
-                    <ArrowUpRight className="mt-1 size-4 shrink-0 text-slate-accent" aria-hidden="true" />
-                    <div>
-                      <p className="font-heading text-sm font-bold uppercase">{truck.name}</p>
+            {fleet.map((truck) => (
+              <li key={truck.name} className="border-b border-border last:border-b-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveTruck(truck.name)}
+                  className={cn(
+                    'flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition-colors hover:bg-muted',
+                    activeTruck === truck.name && 'bg-muted',
+                  )}
+                  aria-pressed={activeTruck === truck.name}
+                >
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className="relative size-12 shrink-0 overflow-hidden rounded-sm bg-muted">
+                      <Image
+                        src={truckImages[truck.name] ?? '/images/hero-truck.png'}
+                        alt={truck.name}
+                        fill
+                        sizes="48px"
+                        className="object-cover"
+                      />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="truncate font-heading text-sm font-bold uppercase">
+                        {truck.name}
+                      </p>
                       <p className="text-sm text-muted-foreground">
                         {truck.type}
                         {truck.volume !== '—' ? ` · ${truck.volume}` : ''}
                       </p>
                     </div>
                   </div>
-                  <p className="shrink-0 font-heading text-sm font-bold text-primary">{truck.capacity}</p>
-                    </button>
-                </li>
-              ))}
+
+                  <p className="shrink-0 font-heading text-sm font-bold text-primary">
+                    {truck.capacity}
+                  </p>
+                </button>
+              </li>
+            ))}
             </ul>
           </div>
 

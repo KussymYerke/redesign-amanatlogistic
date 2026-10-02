@@ -15,8 +15,21 @@ export default function GalleryPage() {
     <>
       <SiteHeader />
       <main className="pt-28">
-        <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24">
-          <SectionHeading index="04" eyebrow="Галерея" title="Техника и" titleMuted="перевозки." lead="Фотографии нашего транспорта и выполненных перевозок. Нажмите на фото для просмотра." />
+        <section className="relative overflow-hidden border-b border-border bg-muted/30">
+          <div className="absolute inset-y-0 left-0 hidden w-1/5 bg-[url('/images/fleet-howo.png')] bg-cover bg-center opacity-25 lg:block" aria-hidden="true" />
+          <div className="absolute inset-y-0 right-0 hidden w-1/5 bg-[url('/images/cargo-trawl.png')] bg-cover bg-center opacity-25 lg:block" aria-hidden="true" />
+          <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 py-14 md:px-10 md:py-20 lg:grid-cols-[0.9fr_1.4fr]">
+            <div>
+              <p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.28em] text-slate-accent">Галерея</p>
+              <h1 className="max-w-xl font-heading text-4xl font-black uppercase leading-[0.95] tracking-tight text-primary md:text-6xl">Техника и <span className="text-slate-accent">перевозки.</span></h1>
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">Фотографии нашего транспорта и выполненных перевозок. Нажмите на фото для просмотра.</p>
+            </div>
+            <div className="relative aspect-[16/8] overflow-hidden rounded-sm bg-primary shadow-sm">
+              <Image src="/images/hero-truck.png" alt="Грузовой автомобиль AMANAT Logistic на маршруте" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" />
+            </div>
+          </div>
+        </section>
+        <div className="mx-auto max-w-7xl px-5 pb-12 md:px-10 md:pb-20">
           <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((image, index) => (
               <button key={image.src} type="button" onClick={() => setActiveImage(index)} className="group relative aspect-[4/3] overflow-hidden rounded-sm text-left">

@@ -6,7 +6,7 @@ export function Standards() {
     <section className="bg-muted py-20 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
-          index="07"
+          index="05"
           eyebrow="Стандарты"
           title="Качество"
           titleMuted="обслуживания."

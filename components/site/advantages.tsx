@@ -10,7 +10,7 @@ export function Advantages() {
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
           tone="dark"
-          index="03"
+          index="02"
           eyebrow="Почему выбирают нас"
           title="Доверьте работу"
           titleMuted="профессионалам."
