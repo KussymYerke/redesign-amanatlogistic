@@ -35,11 +35,11 @@ export function OrderCta() {
           eyebrow="Готовы начать?"
           title="Получите расчёт"
           titleMuted="стоимости бесплатно."
-          lead="Оставьте заявку — мы свяжемся в течение 30 минут и рассчитаем стоимость доставки точно под ваш проект."
+          lead="Оставьте заявку — мы свяжемся в течение 10 минут и рассчитаем стоимость доставки точно под ваш проект."
         />
         <div className="flex flex-col gap-4 sm:flex-row">
           <a
-            href={contacts.phoneHref}
+            href="#order"
             className="inline-flex items-center justify-center gap-3 rounded-full bg-primary px-8 py-4 font-heading text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-navy"
           >
             Оформить заявку

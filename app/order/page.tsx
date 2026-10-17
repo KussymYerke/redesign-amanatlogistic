@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/site/section-heading";
 const benefits = [
   {
     icon: Clock,
-    title: "Ответ за 30 минут",
+    title: "Ответ за 10 минут",
     text: "Менеджер свяжется с вами в рабочее время и уточнит детали перевозки.",
   },
   {
@@ -34,7 +34,7 @@ export default function OrderPage() {
             eyebrow="Оформить заказ"
             title="Получите расчёт"
             titleMuted="стоимости бесплатно."
-            lead="Оставьте заявку — мы свяжемся в течение 30 минут."
+            lead="Оставьте заявку — мы свяжемся в течение 10 минут."
           />
 
           <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-[1.1fr_0.9fr]">

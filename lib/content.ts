@@ -32,7 +32,7 @@ export const cargoTypes = [
   {
     title: 'Промышленное оборудование',
     text: 'Экскаваторы, бульдозеры, краны, погрузчики, дорожно-строительная и другая техника.',
-    image: '/images/5.jpeg',
+    image: '/images/industrial-equipment.jpg',
   },
   {
     title: 'Негабаритные грузы',
@@ -57,7 +57,7 @@ export const cargoTypes = [
   {
     title: 'И другое',
     text: 'Любые типы грузов по индивидуальному запросу. Найдём оптимальное решение для вашей задачи.',
-    image: '/images/1.jpeg',
+    image: '/images/tracks.jpg',
   },
 ]
 export const cargoMapContent = {
@@ -87,23 +87,10 @@ export const advantages = [
   },
   {
     title: "Собственный парк",
-    text: "HOWO, Mercedes, Shacman — грузоподъёмность от 1 до 200 тонн.",
+    text: "DAF, Mercedes, Трал — грузоподъёмность от 1 до 200 тонн.",
   },
 ];
 export const fleet = [
-  { name: "HOWO", type: "Самосвал", capacity: "25 т", volume: "17–18 м³" },
-  {
-    name: "Mercedes-Benz Arocs",
-    type: "Самосвал",
-    capacity: "25 т",
-    volume: "17–18 м³",
-  },
-  {
-    name: "Shacman X3000",
-    type: "Самосвал",
-    capacity: "40 т",
-    volume: "22–25 м³",
-  },
   { name: "Газель", type: "Малотоннажный", capacity: "3 т", volume: "—" },
   { name: "DAF", type: "Грузовой", capacity: "5 т", volume: "—" },
   { name: "Mercedes-Benz", type: "Грузовой", capacity: "10 т", volume: "—" },
@@ -154,7 +141,6 @@ export const standards = [
     title: "Опытные водители",
     text: "Водители с многолетним профессиональным стажем.",
   },
-  { title: "GPS-мониторинг", text: "Все автомобили оснащены GPS-трекерами." },
   {
     title: "Документы",
     text: "Полный пакет сопроводительных документов на каждый рейс.",

@@ -20,7 +20,6 @@ const steps = [
   'Погрузка',
   'Документы',
   'Маршрут',
-  'Доставка',
   'Выгрузка',
 ]
 
@@ -131,7 +130,7 @@ export function Cargo() {
         {/* Fleet link */}
         <div className="mt-10">
           <ArrowLink
-            href="#fleet"
+            href="fleet"
             label="Смотреть автопарк"
           />
         </div>

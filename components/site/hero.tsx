@@ -23,10 +23,6 @@ export function Hero() {
       />
 
       <div className="mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-5 pb-20 pt-32 md:px-10">
-        <p className="max-w-sm font-heading text-xs font-bold uppercase leading-relaxed tracking-[0.25em] text-navy-foreground/90 md:text-sm">
-          Cargo transportation across Kazakhstan &amp; CIS
-        </p>
-
         <h1 className="mt-8 font-heading text-[2rem] font-extrabold uppercase leading-[1] tracking-tight text-balance sm:text-6xl lg:text-7xl">
           Грузоперевозки
           <br />
@@ -34,14 +30,6 @@ export function Hero() {
           <br />
           <span className="text-slate-accent">и СНГ</span>
         </h1>
-
-        <p className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-heading text-lg font-bold md:text-2xl">
-          <span>Алматы</span>
-          <ArrowRight className="size-5 text-slate-accent" aria-hidden="true" />
-          <span>Казахстан</span>
-          <ArrowRight className="size-5 text-slate-accent" aria-hidden="true" />
-          <span>СНГ</span>
-        </p>
 
         <p className="mt-6 max-w-xl text-base leading-relaxed text-navy-foreground/80 md:text-lg">
           Перевозим строительные, промышленные и коммерческие грузы собственным автопарком. Специальные
