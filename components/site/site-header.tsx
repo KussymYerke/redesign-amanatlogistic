@@ -86,6 +86,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
+          {languageSelector}
+
           <a
             href={contacts.phoneHref}
             className="flex items-center gap-2 text-sm font-semibold"
@@ -93,8 +95,6 @@ export function SiteHeader() {
             <Phone className="size-4" aria-hidden="true" />
             {contacts.phone}
           </a>
-
-          {languageSelector}
 
           <a
             href="/order"
