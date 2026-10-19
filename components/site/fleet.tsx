@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { truckSpecs, fleet } from '@/lib/content'
+import { useLanguage } from '@/lib/i18n'
 import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
 
@@ -20,12 +21,22 @@ const truckImages: Record<string, string> = {
 }
 
 export function Fleet() {
+  const { t } = useLanguage()
+  const content = t.fleetSection
+
   const [activeTruck, setActiveTruck] = useState(fleet[0]?.name ?? '')
+
   const selectedTruck =
     fleet.find((truck) => truck.name === activeTruck) ?? fleet[0]
 
   const selectedImage =
     truckImages[selectedTruck.name] ?? '/images/hero-truck.png'
+
+  const translateTruckName = (name: string) =>
+    content.types[name as keyof typeof content.types] ?? name
+
+  const translateSpecLabel = (label: string) =>
+    content.specs[label as keyof typeof content.specs] ?? label
 
   return (
     <section
@@ -36,22 +47,21 @@ export function Fleet() {
         <SectionHeading
           tone="dark"
           index="04"
-          eyebrow="Наш транспорт"
-          title="Автопарк."
-          titleMuted="Весь в собственности."
-          lead="Организуем грузоперевозки по Казахстану и странам СНГ, подбирая оптимальный транспорт под тип, объём и вес вашего груза. В нашем распоряжении — тентованные автомобили, рефрижераторы и тралы. Весь транспорт проходит регулярное техническое обслуживание, а опытные водители обеспечивают надёжную и своевременную доставку."
+          eyebrow={content.eyebrow}
+          title={content.title}
+          titleMuted={content.titleMuted}
+          lead={content.lead}
         />
 
         <div className="grid overflow-hidden rounded-sm rounded-br-[3rem] border border-navy-foreground/10 lg:grid-cols-5">
-          {/* Truck list */}
           <div className="border-b border-navy-foreground/10 lg:col-span-2 lg:border-b-0 lg:border-r">
             <div className="flex items-center justify-between border-b border-navy-foreground/10 px-6 py-4">
               <p className="font-heading text-xs font-bold uppercase tracking-wider text-navy-foreground">
-                {`Весь автопарк · ${fleet.length}`}
+                {`${content.allFleet} · ${fleet.length}`}
               </p>
 
               <p className="text-xs text-navy-foreground/50">
-                Грузоподъёмность
+                {content.capacity}
               </p>
             </div>
 
@@ -78,7 +88,7 @@ export function Fleet() {
                             truckImages[truck.name] ??
                             '/images/hero-truck.png'
                           }
-                          alt={truck.name}
+                          alt={translateTruckName(truck.name)}
                           fill
                           sizes="48px"
                           className="object-cover"
@@ -87,11 +97,11 @@ export function Fleet() {
 
                       <div className="min-w-0">
                         <p className="truncate font-heading text-sm font-bold uppercase">
-                          {truck.name}
+                          {translateTruckName(truck.name)}
                         </p>
 
                         <p className="text-sm text-navy-foreground/60">
-                          {truck.type}
+                          {translateTruckName(truck.type)}
                           {truck.volume !== '—' ? ` · ${truck.volume}` : ''}
                         </p>
                       </div>
@@ -106,12 +116,11 @@ export function Fleet() {
             </ul>
           </div>
 
-          {/* Selected truck */}
           <div className="flex flex-col lg:col-span-3">
             <div className="relative aspect-[16/9] w-full">
               <Image
                 src={selectedImage}
-                alt={`${selectedTruck.name} из автопарка AMANAT Logistic`}
+                alt={`${translateTruckName(selectedTruck.name)} ${content.truckAlt}`}
                 fill
                 sizes="(min-width: 1024px) 60vw, 100vw"
                 className="object-cover"
@@ -119,25 +128,23 @@ export function Fleet() {
 
               <div className="absolute left-4 top-4 rounded-sm bg-primary px-3 py-2 text-navy-foreground">
                 <p className="text-[10px] font-semibold uppercase tracking-widest text-navy-foreground/60">
-                  Флагман
+                  {content.flagship}
                 </p>
 
                 <p className="font-heading text-sm font-bold uppercase">
-                  {`${selectedTruck.name} · ${selectedTruck.capacity}`}
+                  {`${translateTruckName(selectedTruck.name)} · ${selectedTruck.capacity}`}
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col gap-6 bg-primary/30 p-6 md:p-8">
               <p className="leading-relaxed text-navy-foreground/75">
-                {selectedTruck.name} — собственный транспорт AMANAT Logistic
-                для надёжной перевозки грузов. Грузоподъёмность{' '}
-                {selectedTruck.capacity}
+                {translateTruckName(selectedTruck.name)} — {content.descriptionStart}{' '}
+                {content.capacityLabel.toLowerCase()} {selectedTruck.capacity}
                 {selectedTruck.volume !== '—'
-                  ? `, объём ${selectedTruck.volume}`
+                  ? `, ${content.volumeLabel} ${selectedTruck.volume}`
                   : ''}
-                . Машина проходит регулярное техническое обслуживание и готова
-                к работе на городских и междугородних маршрутах.
+                . {content.descriptionEnd}
               </p>
 
               <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-3">
@@ -148,7 +155,7 @@ export function Fleet() {
                       className="flex flex-col gap-1 border-t border-navy-foreground/10 pt-3"
                     >
                       <dt className="text-xs uppercase tracking-wider text-navy-foreground/50">
-                        {spec.label}
+                        {translateSpecLabel(spec.label)}
                       </dt>
 
                       <dd className="font-heading text-sm font-bold">

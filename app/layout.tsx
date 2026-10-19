@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Manrope, Montserrat } from 'next/font/google'
 import './globals.css'
+import { LanguageProvider } from '@/lib/i18n'
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -44,7 +45,9 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${manrope.variable} ${montserrat.variable} bg-background`}>
       <body className="font-sans antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import {
   ArrowRight,
@@ -11,17 +13,8 @@ import {
 } from 'lucide-react'
 
 import { cargoTypes } from '@/lib/content'
+import { useLanguage } from '@/lib/i18n'
 import { ArrowLink, SectionHeading } from './section-heading'
-
-const steps = [
-  'Заявка',
-  'Расчёт',
-  'Подача ТС',
-  'Погрузка',
-  'Документы',
-  'Маршрут',
-  'Выгрузка',
-]
 
 const cargoIcons = [
   Building2,
@@ -35,6 +28,9 @@ const cargoIcons = [
 ]
 
 export function Cargo() {
+  const { t } = useLanguage()
+  const cargo = t.cargo
+
   return (
     <section
       id="cargo"
@@ -43,25 +39,25 @@ export function Cargo() {
       <div className="mx-auto max-w-7xl px-5 md:px-10">
         <SectionHeading
           index="03"
-          eyebrow="Что мы перевозим"
-          title="Грузоперевозки"
-          titleMuted="по Казахстану и СНГ."
-          lead="Строительные, промышленные, коммерческие и негабаритные грузы. Специальные разрешения для тяжеловесных перевозок на тралах до 200 тонн."
+          eyebrow={cargo.eyebrow}
+          title={cargo.title}
+          titleMuted={cargo.titleMuted}
+          lead={cargo.lead}
           link={{
-            label: 'Рассчитать перевозку',
+            label: cargo.calculate,
             href: '#order',
           }}
         />
 
         {/* Steps */}
         <ol className="mt-14 flex flex-wrap items-center justify-between gap-y-4 border-y border-border py-5">
-          {steps.map((step, i) => (
+          {cargo.steps.map((step, index) => (
             <li key={step} className="flex items-center gap-3">
               <span className="font-heading text-[11px] font-bold uppercase tracking-wider text-foreground">
                 {step}
               </span>
 
-              {i < steps.length - 1 && (
+              {index < cargo.steps.length - 1 && (
                 <ArrowRight
                   aria-hidden="true"
                   className="hidden h-4 w-4 text-muted-foreground sm:block"
@@ -73,8 +69,11 @@ export function Cargo() {
 
         {/* Cargo cards */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cargoTypes.map((item, index) => {
+          {cargo.items.map((item, index) => {
             const Icon = cargoIcons[index]
+            const image = cargoTypes[index]
+
+            if (!Icon || !image) return null
 
             return (
               <article
@@ -84,7 +83,7 @@ export function Cargo() {
                 {/* Image */}
                 <div className="relative aspect-[1.45] overflow-hidden">
                   <Image
-                    src={item.image}
+                    src={image.image}
                     alt={item.title}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
@@ -131,7 +130,7 @@ export function Cargo() {
         <div className="mt-10">
           <ArrowLink
             href="fleet"
-            label="Смотреть автопарк"
+            label={cargo.fleet}
           />
         </div>
       </div>
