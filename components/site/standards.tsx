@@ -11,7 +11,7 @@ export function Standards() {
     <section className="bg-muted py-20 md:py-32">
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
-          index="05"
+          index="03"
           eyebrow={content.eyebrow}
           title={content.title}
           titleMuted={content.titleMuted}

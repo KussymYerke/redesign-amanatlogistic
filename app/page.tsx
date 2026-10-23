@@ -1,7 +1,5 @@
 import { Advantages } from '@/components/site/advantages'
-import { Cargo } from '@/components/site/cargo'
 import { Directions } from '@/components/site/directions'
-import { Fleet } from '@/components/site/fleet'
 import { Hero } from '@/components/site/hero'
 import { OrderCta } from '@/components/site/order-cta'
 import { SiteFooter } from '@/components/site/site-footer'
@@ -16,8 +14,6 @@ export default function Page() {
         <Hero />
         <Directions />
         <Advantages />
-        <Cargo />
-        <Fleet />
         <Standards />
         <OrderCta />
       </main>

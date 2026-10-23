@@ -39,7 +39,7 @@ export function OrderCta() {
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-14 px-5 md:px-10">
         <SectionHeading
-          index="06"
+          index="04"
           eyebrow={content.eyebrow}
           title={content.title}
           titleMuted={content.titleMuted}
