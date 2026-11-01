@@ -1,3 +1,5 @@
+import type { Language } from '@/lib/i18n'
+
 export const contacts = {
   phone: "+7 707 737 33 33",
   phoneHref: "tel:+77077373333",
@@ -11,12 +13,6 @@ export const navLinks = [
   { label: "Автопарк", href: "/fleet" },
   { label: "Галерея", href: "/gallery" },
   { label: "Контакты", href: "/contacts" },
-];
-export const heroStats = [
-  { value: "200 т", label: "Максимальная грузоподъёмность" },
-  { value: "15 лет", label: "В сфере логистики" },
-  { value: "20+", label: "Единиц собственного транспорта" },
-  { value: "24/7", label: "Режим работы" },
 ];
 export const cargoTypes = [
   {
@@ -246,24 +242,58 @@ export const featuredTruck = {
   specs: truckSpecs.HOWO,
 };
 
-export function whatsappUrl(form: {
-  name: string;
-  phone: string;
-  route: string;
-  cargo: string;
-  weight: string;
-  message: string;
-}) {
+export function whatsappUrl(
+  form: {
+    name: string
+    phone: string
+    route: string
+    cargo: string
+    weight: string
+    message: string
+  },
+  language: Language = 'ru',
+) {
+  const labels = {
+    ru: {
+      title: 'Заявка на грузоперевозку',
+      name: 'Имя',
+      phone: 'Телефон',
+      route: 'Маршрут',
+      cargo: 'Груз',
+      weight: 'Вес',
+      message: 'Комментарий',
+    },
+    kz: {
+      title: 'Жүк тасымалдауға өтінім',
+      name: 'Аты',
+      phone: 'Телефон',
+      route: 'Бағыт',
+      cargo: 'Жүк',
+      weight: 'Салмағы',
+      message: 'Түсініктеме',
+    },
+    en: {
+      title: 'Freight transportation request',
+      name: 'Name',
+      phone: 'Phone',
+      route: 'Route',
+      cargo: 'Cargo',
+      weight: 'Weight',
+      message: 'Comment',
+    },
+  }[language]
+
   const text = [
-    `Заявка на грузоперевозку`,
-    `Имя: ${form.name}`,
-    `Телефон: ${form.phone}`,
-    `Маршрут: ${form.route}`,
-    `Груз: ${form.cargo}`,
-    `Вес: ${form.weight}`,
-    form.message ? `Комментарий: ${form.message}` : "",
+    labels.title,
+    `${labels.name}: ${form.name}`,
+    `${labels.phone}: ${form.phone}`,
+    `${labels.route}: ${form.route}`,
+    `${labels.cargo}: ${form.cargo}`,
+    `${labels.weight}: ${form.weight}`,
+    form.message ? `${labels.message}: ${form.message}` : '',
   ]
     .filter(Boolean)
-    .join("\n");
-  return `${contacts.whatsappHref}?text=${encodeURIComponent(text)}`;
+    .join('\n')
+
+  return `${contacts.whatsappHref}?text=${encodeURIComponent(text)}`
 }

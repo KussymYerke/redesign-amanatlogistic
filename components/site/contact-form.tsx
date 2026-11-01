@@ -8,7 +8,7 @@ import { useLanguage } from '@/lib/i18n'
 
 export function ContactForm() {
   const [sent, setSent] = useState(false)
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const content = t.orderPage.form
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -16,14 +16,17 @@ export function ContactForm() {
 
     const data = new FormData(event.currentTarget)
 
-    const url = whatsappUrl({
-      name: String(data.get('name') || ''),
-      phone: String(data.get('phone') || ''),
-      route: String(data.get('route') || ''),
-      cargo: String(data.get('cargo') || ''),
-      weight: String(data.get('weight') || ''),
-      message: String(data.get('message') || ''),
-    })
+    const url = whatsappUrl(
+      {
+        name: String(data.get('name') || ''),
+        phone: String(data.get('phone') || ''),
+        route: String(data.get('route') || ''),
+        cargo: String(data.get('cargo') || ''),
+        weight: String(data.get('weight') || ''),
+        message: String(data.get('message') || ''),
+      },
+      language,
+    )
 
     setSent(true)
     window.open(url, '_blank', 'noopener,noreferrer')

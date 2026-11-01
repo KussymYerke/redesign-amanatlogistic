@@ -1,7 +1,5 @@
-
 'use client'
 
-import { heroStats } from '@/lib/content'
 import { useLanguage } from '@/lib/i18n'
 import { SectionHeading } from './section-heading'
 
@@ -25,19 +23,18 @@ export function Directions() {
           />
 
           <dl className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
-            {heroStats.map((stat, index) => {
-              const label =
-                content.stats[index]?.label ?? stat.label
+            {t.heroStat.map((value, index) => {
+              const label = content.stats[index]?.label
 
               return (
                 <div
-                  key={stat.label}
+                  key={index}
                   className="flex flex-col gap-3 border-t border-slate-accent/50 pt-8"
                 >
                   <dt className="sr-only">{label}</dt>
 
                   <dd className="font-heading text-4xl font-extrabold tracking-tight text-primary md:text-6xl">
-                    {stat.value}
+                    {value}
                   </dd>
 
                   <dd className="max-w-48 text-sm leading-relaxed text-muted-foreground">

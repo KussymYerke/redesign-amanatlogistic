@@ -23,6 +23,7 @@ const truckImages: Record<string, string> = {
 export function Fleet() {
   const { t } = useLanguage()
   const content = t.fleetSection
+  const company = t.companyContent
 
   const [activeTruck, setActiveTruck] = useState(fleet[0]?.name ?? '')
 
@@ -35,8 +36,27 @@ export function Fleet() {
   const translateTruckName = (name: string) =>
     content.types[name as keyof typeof content.types] ?? name
 
-  const translateSpecLabel = (label: string) =>
-    content.specs[label as keyof typeof content.specs] ?? label
+  const specKeys: Record<string, keyof typeof company.specs> = {
+    'Грузоподъёмность': 'capacity',
+    'Объём кузова': 'volume',
+    'Мощность': 'power',
+    'Формула': 'formula',
+    'Тип транспорта': 'vehicleType',
+    'Применение': 'application',
+    'Тип кузова': 'bodyType',
+    'Погрузка': 'loading',
+    'Температурный режим': 'temperature',
+  }
+
+  const translateSpecLabel = (label: string) => {
+    const key = specKeys[label]
+    return key ? company.specs[key] : label
+  }
+
+  const truckDescription =
+  company.truckDescriptions[
+    selectedTruck.name as keyof typeof company.truckDescriptions
+  ]
 
   return (
     <section
@@ -139,12 +159,7 @@ export function Fleet() {
 
             <div className="flex flex-col gap-6 bg-primary/30 p-6 md:p-8">
               <p className="leading-relaxed text-navy-foreground/75">
-                {translateTruckName(selectedTruck.name)} — {content.descriptionStart}{' '}
-                {content.capacityLabel.toLowerCase()} {selectedTruck.capacity}
-                {selectedTruck.volume !== '—'
-                  ? `, ${content.volumeLabel} ${selectedTruck.volume}`
-                  : ''}
-                . {content.descriptionEnd}
+                {truckDescription}
               </p>
 
               <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-3">
